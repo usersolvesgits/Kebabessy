@@ -6,4 +6,5 @@ edition = "2024"
 [dependencies]
 reqwest = "0.13.5"
 rocket = { version = "0.5.1", features = ["json"] }
+rocket_cors = "0.6.0"
 serde = "1.0.229"
