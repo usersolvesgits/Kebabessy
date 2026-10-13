@@ -1,4 +1,4 @@
-export async function get_api() {
+export async function getApi() {
     try {
         const request = await fetch("http://localhost:8080/test");
         let result = await request.json();

@@ -11,6 +11,16 @@ That's why I decided to create **Kebabessy**, to answer that need in a fast and 
 
 ---
 
+## TODOS
+
+- [ ] Get user location.
+- [ ] Send the user location to the backend.
+- [ ] Find a good free and possibly keyless API.
+- [ ] Locate The Kebab.
+- [ ] Create a good UI.
+
+---
+
 ## License
 
 This project is released under the **Kebab For All License (KFAL-v1.0)**. To read the full license [press here](./LICENSE).

@@ -1,11 +1,9 @@
-pub mod extern_api;
-
 #[macro_use] extern crate rocket;
-use rocket::{http::Status, serde::json::Json};
-use serde::{Serialize, Deserialize};
+use rocket::{http, serde::json::Json};
+use serde::{Serialize};
 use rocket_cors::{CorsOptions, AllowedOrigins};
 
-#[launch]
+#[rocket::launch]
 fn rocket() -> _ {
     const ORIGIN: &str = "http://localhost:8081";
 
@@ -21,18 +19,18 @@ fn rocket() -> _ {
         .attach(cors)
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize)]
 struct Response {
     message: String,
-    status_code: Status
+    http_status: http::Status
 }
 impl Response {
-    fn new(message: String, status_code: Status) -> Self {
-        Self { message, status_code }
+    fn new(message: String, http_status: http::Status) -> Response {
+        Response { message, http_status }
     }
 }
 
 #[get("/test")]
 fn index() -> Json<Response> {
-    Json(Response::new(String::from("this is some placeholder data"), Status::Ok))
+    Json(Response::new(String::from("This is a message"), http::Status::Ok))
 }
