@@ -13,11 +13,18 @@ That's why I decided to create **Kebabessy**, to answer that need in a fast and 
 
 ## TODOS
 
-- [ ] Get user location.
+- [X] Get user location.
 - [ ] Send the user location to the backend.
 - [ ] Find a good free and possibly keyless API.
 - [ ] Locate The Kebab.
 - [ ] Create a good UI.
+
+---
+
+## Known Issues
+
+1) You are unable to get the local position on PC.
+2) You can't connect to the backend on mobile devices.
 
 ---
 

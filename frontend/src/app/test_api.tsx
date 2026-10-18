@@ -1,5 +1,5 @@
 import { Text, Button, ScrollView } from 'react-native';
-import { getApi } from '@/api/api_call';
+import { getApi } from '@/functions/api_call';
 import getStili from "@/app/_styles";
 
 const stili = getStili();
