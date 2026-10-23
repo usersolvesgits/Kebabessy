@@ -1,6 +1,6 @@
 # Kebabessy
 
-An Android application that guides you to the nearest Kebab.
+An application that guides you to the nearest Kebab.
 
 ## Introduction - Why Kebabessy?
 
