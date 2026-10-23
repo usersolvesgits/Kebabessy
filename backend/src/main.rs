@@ -1,6 +1,10 @@
+pub mod kebab_search;
+use crate::kebab_search::find_kebab::{find_kebab};
+use crate::kebab_search::models::KebabReturnResponse;
+
 #[macro_use] extern crate rocket;
 use rocket::{http::{self, Method}, serde::json::Json};
-use serde::{Serialize, Deserialize};
+use serde::Serialize;
 use rocket_cors::{CorsOptions, AllowedOrigins, AllowedHeaders};
 
 #[rocket::launch]
@@ -9,7 +13,7 @@ fn rocket() -> _ {
 
     let cors = CorsOptions {
         allowed_origins:  AllowedOrigins::some_exact(&[ORIGIN]),
-        allowed_methods: Vec::from([Method::Get, Method::Put])
+        allowed_methods: Vec::from([Method::Get])
             .into_iter()
             .map(From::from)
             .collect(),
@@ -20,16 +24,11 @@ fn rocket() -> _ {
         .expect("Error while building cors settings!");
 
     rocket::build()
-        .mount("/", routes![index, put_user_location])
+        .mount("/", routes![locate_kebab])
         .attach(cors)
 }
-#[get("/test")]
-fn index() -> Json<Response> {
-    Json(Response::new(String::from("This is a message"), http::Status::Ok))
-}
 
-
-#[derive(Serialize)]
+#[derive(Serialize, Debug)]
 struct Response {
     message: String,
     http_status: http::Status
@@ -40,18 +39,19 @@ impl Response {
     }
 }
 
-#[derive(Deserialize, Debug)]
-struct UserLocation {
-    user_lat: f64,
-    user_lon: f64
-}
+#[get("/find_kebab?<user_lat>&<user_lon>")]
+async fn locate_kebab(user_lat: f64, user_lon: f64) -> Json<Response> {
+    let response: KebabReturnResponse = match find_kebab(user_lat, user_lon).await {
+        Some(r) => { r }
+        None => {
+            eprintln!("Could not locate the nearest Kebab!");
+            return Json(Response::new(String::from("ERROR: Error locating The Kebab!"), http::Status::NoContent))
+        }
+    };
 
-#[put("/user_location", data = "<location>")]
-fn put_user_location(location: Json<UserLocation>) -> Json<Response> {
-    println!("Received location: {:?}", location);
-
-    let user_loc: UserLocation = location.into_inner();
-    println!("gps_user values: lat => {:?}; lon => {:?}", user_loc.user_lat, user_loc.user_lon);
-
-    Json(Response::new(String::from("Location received"), http::Status::Ok))
+    let message: String = format!("name: {}, address: {}, coords (lat, lon): {:?}",
+                                  response.name, response.address, response.coordinates);
+    let response = Response::new(message, http::Status::Ok);
+    println!("{:?}", response);
+    Json(response)
 }

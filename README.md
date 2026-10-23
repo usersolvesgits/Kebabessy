@@ -13,17 +13,21 @@ That's why I decided to create **Kebabessy**, to answer that need in a fast and 
 
 ## TODOS
 
+This is a list of some 
+
 - [X] Get user location.
-- [ ] Send the user location to the backend.
-- [ ] Find a good free and possibly keyless API.
-- [ ] Locate The Kebab.
+- [X] Send the user location to the backend.
+- [X] Find a good free and possibly keyless API.
+- [X] Locate The Kebab.
 - [ ] Create a good UI.
+- [ ] Bug Fixes
+- [ ] Release
 
 ---
 
 ## Known Issues
 
-1) You are unable to get the local position on PC.
+1) You are unable to get the local position on some PCs.
 2) You can't connect to the backend on mobile devices.
 
 ---
@@ -48,5 +52,5 @@ This project is released under the **Kebab For All License (KFAL-v1.0)**. To rea
 
 ## Contributions
 
-This project doesn't plan on expanding any time soon, as it was made as a joke.  
-However, feel free to create new issues to tell me what you want to see being implemented in the future.
+This project (once finished) doesn't plan on expanding any time soon, as it was made as a joke.  
+However, feel free to create [new issues](https://github.com/usersolvesgits/Kebabessy/issues/new) to tell me what you want to see being implemented in the future.
