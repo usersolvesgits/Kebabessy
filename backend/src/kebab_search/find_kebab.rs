@@ -34,6 +34,7 @@ pub async fn find_kebab(user_lat: f64, user_lon: f64) -> Option<KebabReturnRespo
         address.push_str(s.as_str());
     }
     if let Some(hn) = properties.house_number {
+        address.push_str(" ");
         address.push_str(hn.as_str());
     }
 
