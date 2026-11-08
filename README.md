@@ -3,7 +3,7 @@
 _**Sauce** is **Peace**.  
 **Hunger** is **Slavery**.  
 **Meat** is **Strength**.  
-**The Kebab is watching you.**  
+**The Kebab is watching you.**_  
 
 An application which guides you to the nearest Kebab.
 
