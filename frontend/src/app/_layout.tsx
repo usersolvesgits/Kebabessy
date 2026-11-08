@@ -1,12 +1,20 @@
+import { View,
+         Text,
+         Pressable,
+         Modal,
+         StyleSheet,
+         useWindowDimensions } from 'react-native';
 import { useState } from 'react';
-import { View, Text, Pressable, Modal, StyleSheet } from 'react-native';
 import { Link, Stack } from 'expo-router';
+import getStili from './_styles';
 
 const Layout = () => {
   const [helpOpen, setHelpOpen] = useState(false);
+  const { width } = useWindowDimensions()
+  const stili = getStili(width);
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{flex: 1}}>
       <Stack screenOptions={{
         headerStyle: {
           backgroundColor: "#2c2c2c",
@@ -20,10 +28,10 @@ const Layout = () => {
         <Stack.Screen name={"find_Kebab"} options={{title:"Kebab Finder"}}/>
       </Stack>
 
-      <Pressable style={helpButtonStyles.helpButton} onPress={() => setHelpOpen(true)}>
+      <Pressable style={({ pressed }) => [helpButtonStyles.helpButton, pressed && stili.btnPressed]}
+                 onPress={() => setHelpOpen(true)}>
         <Text style={helpButtonStyles.helpButtonText}>?</Text>
       </Pressable>
-
       <Modal
         visible={helpOpen}
         transparent={true}
@@ -34,21 +42,24 @@ const Layout = () => {
           <View style={helpButtonStyles.helpBox}>
             <Text style={helpButtonStyles.helpTitle}>Help</Text>
             <Text style={helpButtonStyles.helpText}>
-              <b>Sauce</b> is Peace.<br/>
-              <b>Meat</b> is Slavery.<br/>
-              <b>Hunger</b> is Strength.<br/>
-              <b>The Kebab is watching you.</b><br/>
-              <cite>-George Orwell, 1984</cite> (maybe)<br/><br/>
+              <Text style={stili.bold}>Sauce</Text> is Peace.{"\n"}
+              <Text style={stili.bold}>Hunger</Text> is Slavery.{"\n"}
+              <Text style={stili.bold}>Meat</Text> is Strength.{"\n"}
+              <Text style={stili.bold}>The Kebab is watching you.</Text>{"\n"}{"\n"}
 
-              1. On the Home page, tap the Kebabessy title.<br/>
-              2. On the Kebab Finder page, press the button.<br/>
-              3. Allow location access when asked, and your coordinates will show up.
+              1. On the Home page, tap The overseeing Kebab.{"\n"}
+              2. On the Kebab Finder page, press the button.{"\n"}
+              3. Allow location access when asked, and the information of the nearest Kebab will show up.{"\n"}
+              4. To go back to the Home page, press the "Kebabessy" title.
             </Text>
-            <Pressable style={helpButtonStyles.closeButton} onPress={() => setHelpOpen(false)}>
+            <Pressable style={helpButtonStyles.closeButton}
+                       onPress={() => setHelpOpen(false)}>
               <Text style={helpButtonStyles.helpButtonText}>Close</Text>
             </Pressable>
             <Text style={helpButtonStyles.helpSmallText}>-Press{" "}
-              <Link style={helpButtonStyles.helpSmallTextUnderlined} href={"https://github.com/usersolvesgits/Kebabessy"} target="_blank">
+              <Link style={helpButtonStyles.helpSmallTextUnderlined}
+                    href={"https://github.com/usersolvesgits/Kebabessy"}
+                    target="_blank">
                 here
               </Link>
               {" "}to go to the original repository

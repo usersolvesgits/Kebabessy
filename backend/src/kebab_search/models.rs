@@ -1,4 +1,6 @@
-use serde::Deserialize;
+use serde::{Serialize, Deserialize};
+use rocket::http::Status;
+
 /// Struct used as the base to deserialize the JSON from the API call.
 #[derive(Deserialize, Debug)]
 pub struct KebabResponse {
@@ -22,13 +24,15 @@ pub struct Geometry {
 }
 
 /// Struct used to return the base information of the Kebab place.
+#[derive(Serialize, Debug)]
 pub struct KebabReturnResponse {
     pub name: String,
     pub address: String,
-    pub coordinates: [f64; 2]
+    pub coordinates: [f64; 2],
+    pub status: Status
 }
 impl KebabReturnResponse {
-    pub fn new(name: String, address: String, coordinates: [f64; 2]) -> KebabReturnResponse {
-        KebabReturnResponse { name, address, coordinates }
+    pub fn new(name: String, address: String, coordinates: [f64; 2], status: Status) -> KebabReturnResponse {
+        KebabReturnResponse { name, address, coordinates, status }
     }
 }

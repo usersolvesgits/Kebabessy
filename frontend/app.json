@@ -1,12 +1,14 @@
 {
   "expo": {
-    "name": "frontend",
-    "slug": "frontend",
+    "name": "Kebabessy",
+    "description": "An application which guides you to the nearest Kebab.",
+    "slug": "Kebabessy",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/kebabessy-icon.png",
     "scheme": "frontend",
     "userInterfaceStyle": "automatic",
+    "githubUrl": "https://github.com/usersolvesgits/Kebabessy",
     "ios": {
       "icon": "./assets/expo.icon"
     },

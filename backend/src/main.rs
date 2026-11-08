@@ -4,7 +4,6 @@ use crate::kebab_search::models::KebabReturnResponse;
 
 #[macro_use] extern crate rocket;
 use rocket::{http::{self, Method}, serde::json::Json};
-use serde::Serialize;
 use rocket_cors::{CorsOptions, AllowedOrigins, AllowedHeaders};
 
 #[rocket::launch]
@@ -28,30 +27,20 @@ fn rocket() -> _ {
         .attach(cors)
 }
 
-#[derive(Serialize, Debug)]
-struct Response {
-    message: String,
-    http_status: http::Status
-}
-impl Response {
-    fn new(message: String, http_status: http::Status) -> Response {
-        Response { message, http_status }
-    }
-}
-
 #[get("/find_kebab?<user_lat>&<user_lon>")]
-async fn locate_kebab(user_lat: f64, user_lon: f64) -> Json<Response> {
+async fn locate_kebab(user_lat: f64, user_lon: f64) -> Json<KebabReturnResponse> {
     let response: KebabReturnResponse = match find_kebab(user_lat, user_lon).await {
         Some(r) => { r }
         None => {
             eprintln!("Could not locate the nearest Kebab!");
-            return Json(Response::new(String::from("ERROR: Error locating The Kebab!"), http::Status::NoContent))
+            return Json(KebabReturnResponse::new(
+                String::from("ERROR: Error locating The Kebab!"),
+                String::from(""),
+                [0.0, 0.0],
+                http::Status::NoContent
+            ))
         }
     };
-
-    let message: String = format!("name: {}, address: {}, coords (lat, lon): {:?}",
-                                  response.name, response.address, response.coordinates);
-    let response = Response::new(message, http::Status::Ok);
     println!("{:?}", response);
     Json(response)
 }

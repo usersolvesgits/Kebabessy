@@ -1,9 +1,17 @@
-use reqwest;
 use crate::kebab_search::models::*;
 
-pub async fn find_kebab(user_lat: f64, user_lon: f64) -> Option<KebabReturnResponse> {
-    let api_url: String = format!("https://photon.komoot.io/api/?q=kebab&lat={user_lat}&lon={user_lon}&limit=1");
+use reqwest;
+use rocket::http;
 
+pub async fn find_kebab(user_lat: f64, user_lon: f64) -> Option<KebabReturnResponse> {
+    let api_url: String = format!(
+        "https://photon.komoot.io/api/?q=kebab\
+         &lat={user_lat}&lon={user_lon}\
+         &zoom=16\
+         &location_bias_scale=0.1\
+         &include=osm.amenity.fast_food,osm.amenity.restaurant\
+         &limit=1"
+    );
     let response = match reqwest::get(api_url).await {
         Ok(response) => { response }
         Err(e) => {
@@ -41,6 +49,7 @@ pub async fn find_kebab(user_lat: f64, user_lon: f64) -> Option<KebabReturnRespo
     Some(KebabReturnResponse::new(
         name,
         address,
-        [lat, lon]
+        [lat, lon],
+        http::Status::Ok
     ))
 }

@@ -1,22 +1,67 @@
 import { StyleSheet } from 'react-native';
 
 const getStili = (width: number) => {
+  const imageSize: number = Math.min(width * 0.8, 400);
+  const fontSize: number = findFontSizeTitle(width);
+
   return StyleSheet.create({
     mainWindow: {
       backgroundColor: "#121212"
     },
+
     centerText: {
       textAlign: "center",
       color: "#f1f6f2",
-      fontSize: findFontSizeTitle(width)/2.5
+      fontSize: fontSize/2.5,
     },
     title: {
       textAlign: "center",
+      alignSelf: "center",
       fontWeight: "bold",
       color: "#f1f6f2",
       marginTop: 25,
       marginBottom: 25,
-      fontSize: findFontSizeTitle(width)
+      fontSize: fontSize
+    },
+
+    citation: {
+      fontStyle: "italic",
+    },
+    smallCitation: {
+      fontStyle: "italic",
+      fontSize: fontSize/3
+    },
+    bold: {
+      fontWeight: "bold",
+    },
+
+    kebabBtn: {
+      alignSelf: "center",
+      marginTop: 40
+    },
+    kebabImage: {
+      width: imageSize,
+      height: imageSize,
+      borderRadius: 20
+    },
+
+    btnFindKebab: {
+      alignSelf: "center",
+      marginTop: 40,
+      backgroundColor: "#2c2c2c",
+      paddingVertical: 14,
+      paddingHorizontal: 28,
+      borderRadius: 20
+    },
+    btnPressed: {
+      opacity: 0.7
+    },
+    btnText: {
+      color: "#f1f6f2",
+      fontWeight: "bold",
+      fontSize: 18,
+      alignContent: "center",
+      textAlign: "center"
     }
   });
 }
