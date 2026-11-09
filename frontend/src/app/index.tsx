@@ -10,7 +10,8 @@ export default function Index() {
   const { width }  = useWindowDimensions();
   const stili = getStili(width);
   return (
-    <ScrollView style={stili.mainWindow}>
+    <ScrollView style={stili.mainWindow}
+                showsVerticalScrollIndicator={false}>
       <Text style={stili.title}>
         Kebabessy
       </Text>

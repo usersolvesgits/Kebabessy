@@ -47,7 +47,7 @@ const getStili = (width: number) => {
 
     btnFindKebab: {
       alignSelf: "center",
-      marginTop: 40,
+      marginTop: 30,
       backgroundColor: "#2c2c2c",
       paddingVertical: 14,
       paddingHorizontal: 28,
@@ -70,7 +70,8 @@ const getStili = (width: number) => {
       borderColor: "#f1f6f2",
       width: width/1.5,
       height: width/3,
-      alignSelf: "center"
+      alignSelf: "center",
+      marginBottom: 40
     }
   });
 }

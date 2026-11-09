@@ -17,7 +17,8 @@ export default function userLocation() {
   const [kebabInfo, updateKebabInfo] = useState<KebabInfo | null>(null);
   const platform = Platform.OS;
   return (
-    <ScrollView style={stili.mainWindow}>
+    <ScrollView style={stili.mainWindow}
+                showsVerticalScrollIndicator={false}>
       <Link href={'/'} style={stili.title}>
         Kebabessy
       </Link>
