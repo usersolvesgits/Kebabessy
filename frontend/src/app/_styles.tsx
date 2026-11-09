@@ -62,6 +62,15 @@ const getStili = (width: number) => {
       fontSize: 18,
       alignContent: "center",
       textAlign: "center"
+    },
+
+    mapStyle: {
+      borderWidth: 4,
+      borderStyle: "solid",
+      borderColor: "#f1f6f2",
+      width: width/1.5,
+      height: width/3,
+      alignSelf: "center"
     }
   });
 }
