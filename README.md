@@ -64,7 +64,7 @@ Read the [troubleshooting.md](/docs/troubleshooting.md) file for more informatio
 
 ## License
 
-This project is released under the **Kebab For All License (KFAL-v1.0)**.  
+This project is released under the **Kebab For All License (KFAL-v2.0)**.  
 To read the full license [press here](./LICENSE).
 
 ### In short:
