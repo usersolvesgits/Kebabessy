@@ -1,5 +1,7 @@
 # Kebabessy
 
+![Kebabessy Eye](./frontend/assets/images/kebab-readme.png)
+
 _**Sauce** is **Peace**.  
 **Hunger** is **Slavery**.  
 **Meat** is **Strength**.  
@@ -52,10 +54,11 @@ You can read the (brief) documentation of the project:
 
 ## Known Issues
 
-Read the [`troubleshooting.md`](/docs/troubleshooting.md) file for more information.
+Read the [troubleshooting.md](/docs/troubleshooting.md) file for more information.
 
-1) You can't connect to the backend on mobile devices.
-2) The geolocation of The Kebab might send you to a reeeally far journey.
+1) The geolocation of The Kebab might send you to a reeeally far journey.
+2) The geolocation doesn't work properly.
+3) You can't connect to the backend on mobile devices.
 
 ---
 
